@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export const getTodayFact = async (req, res) => {
   const date = new Date();
   const month = date.getMonth() + 1;
