@@ -83,7 +83,8 @@ export const getWeather7DayForecast = async (req, res) => {
     .catch((error) => res.status(400).json({ message: error.message }));
 };
 
-export const getCurrency = async (req, res) => {const headers = new Headers();
+export const getCurrency = async (req, res) => {
+    const headers = new fetch.Headers();
     headers.append("apikey", process.env.EXCHANGE_RATES_API);
     
     const requestOptions = { method: "GET", headers: headers };
