@@ -84,18 +84,18 @@ export const getWeather7DayForecast = async (req, res) => {
 };
 
 export const getCurrency = async (req, res) => {
-    const headers = new fetch.Headers();
-    headers.append("apikey", process.env.EXCHANGE_RATES_API);
-    
-    const requestOptions = { method: "GET", headers: headers };
-    
-    await fetch(
-      "https://api.apilayer.com/exchangerates_data/latest?symbols=JPY%2CUSD%2CGBP%2CEUR%2CCAD&base=AUD",
-      requestOptions
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        res.send(response);
-      })
-      .catch((error) => res.status(400).json({ message: error.message }));};
+  //   const headers = new fetch.Headers();
+  //   headers.append("apikey", process.env.EXCHANGE_RATES_API);
 
+  //   const requestOptions = { method: "GET", headers: headers };
+
+  await fetch(
+    "https://api.apilayer.com/exchangerates_data/latest?symbols=JPY%2CUSD%2CGBP%2CEUR%2CCAD&base=AUD",
+    { headers: { apikey: process.env.EXCHANGE_RATES_API } }
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((error) => res.status(400).json({ message: error.message }));
+};
